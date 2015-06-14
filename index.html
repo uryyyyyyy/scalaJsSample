@@ -8,9 +8,12 @@
 <!-- Include Scala.js compiled code -->
 <script type="text/javascript" src="target/scala-2.11/scala-js-tutorial-fastopt.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
 
 <!-- Run tutorial.webapp.TutorialApp -->
 <script type="text/javascript">
+    console.log($);
     com.example.DaoFactory().main();//if comment out this, dao2 will be injected -->
     com.example.TutorialApp().main();
 </script>

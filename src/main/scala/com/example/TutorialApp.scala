@@ -7,8 +7,11 @@ import upickle._
 
 import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.JSApp
+import scala.scalajs.js.annotation.JSExport
 
-object TutorialApp extends JSApp {
+@JSExport
+object TutorialApp {
+  @JSExport
   def main(): Unit = {
     g.console.log("Hello world!")
     val s = Sample(1, "nama")
@@ -30,6 +33,8 @@ object TutorialApp extends JSApp {
 
     val dao = DaoFactory.getDao()
     g.console.log(dao.getStr())
+
+    g.console.log(g.$)
 
     React.render(HelloMessage("John"), document.body)
 
@@ -62,8 +67,11 @@ object EitherSample {
 
 }
 
-object DaoFactory extends JSApp{
+@JSExport
+object DaoFactory{
   var mode:String = null
+
+  @JSExport
   def main() = {
     this.mode = "dao1"
   }
