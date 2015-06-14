@@ -3,10 +3,9 @@ package com.example
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.prefix_<^._
 import org.scalajs.dom._
-import org.scalajs.dom.raw.CustomEvent
 import upickle._
 
-import scala.scalajs.js.Dynamic.{global => g, newInstance => jsnew}
+import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.JSApp
 
 object TutorialApp extends JSApp {
@@ -28,6 +27,9 @@ object TutorialApp extends JSApp {
     EitherSample.match_(ei)
     val ei2 = EitherSample.eitherR()
     EitherSample.match_(ei2)
+
+    val dao = DaoFactory.getDao()
+    g.console.log(dao.getStr())
 
     React.render(HelloMessage("John"), document.body)
 
@@ -58,4 +60,36 @@ object EitherSample {
     }
   }
 
+}
+
+object DaoFactory extends JSApp{
+  var mode:String = null
+  def main() = {
+    this.mode = "dao1"
+  }
+  def getDao():DaoSample = {
+    if(mode == "dao1"){
+      DaoSample1
+    }else{
+      DaoSample2
+    }
+  }
+}
+
+trait DaoSample {
+  def getStr():String
+}
+
+object DaoSample1 extends DaoSample{
+  def getStr():String = {
+    g.console.log("dao1 injected")
+    "dao1"
+  }
+}
+
+object DaoSample2 extends DaoSample{
+  def getStr():String = {
+    g.console.log("dao2 injected")
+    "dao2"
+  }
 }
