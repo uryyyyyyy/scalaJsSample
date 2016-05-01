@@ -7,11 +7,18 @@
 <body>
 <!-- Include Scala.js compiled code -->
 <script type="text/javascript" src="target/scala-2.11/helloworld-fastopt.js"></script>
+<script type="text/javascript" src="myJS.js"></script>
 
 
 <!-- Run tutorial.webapp.TutorialApp -->
 <script type="text/javascript">
-    tutorial.webapp.TutorialApp().main();
+    var tmp1 = tutorial.webapp.TutorialApp().func1();
+    var str1 = tutorial.webapp.TutorialApp().func3(tmp1);
+    jsFunc1(str1);
+
+    var tmp2 = jsFunc2();
+    var str2 = jsFunc3(tmp2);
+    tutorial.webapp.TutorialApp().func2(str2);
 </script>
 </body>
 </html>

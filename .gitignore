@@ -1,5 +1,12 @@
-/target/
-/.idea/
+# sbt target folders
+target/
+
+# eclipse project files
+/.settings
+/.classpath
+/.project
+/.idea
+
 /.idea_modules/
 /project/target/
 /project/project/target/

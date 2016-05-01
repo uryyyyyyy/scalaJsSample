@@ -1,29 +1,39 @@
-name := "Scala.js Tutorial"
+name := "scalaJsSample"
 
-scalaJSStage in Global := FastOptStage
+scalaVersion := "2.11.8"
 
 lazy val commonSettings = Seq(
-	organization := "com.github.uryyyyyyy",
-	scalaVersion := "2.11.7",
-	libraryDependencies ++= Seq(
-		"com.lihaoyi" %%% "upickle" % "0.2.8",
-		"org.scala-js" %%% "scalajs-dom" % "0.8.0",
-		"com.github.japgolly.scalajs-react" %%% "core" % "0.10.4",
-		"org.scalatest" %% "scalatest" % "3.0.0-M15" % "test"
-	)
+  organization := "com.github.uryyyyyyy",
+  scalaVersion := "2.11.8"
 )
 
-lazy val angular1 = (project in file("angular1")).
-		settings(commonSettings: _*)
-
-lazy val circe = (project in file("circe")).
-		settings(commonSettings: _*)
-
-lazy val share = (project in file("share")).
-		settings(commonSettings: _*)
-
-lazy val server = (project in file("server")).
-		settings(commonSettings: _*)
+lazy val clientCore = (project in file("clientCore")).
+  settings(commonSettings: _*)
 
 lazy val helloWorld = (project in file("helloWorld")).
-		settings(commonSettings: _*)
+  settings(commonSettings: _*)
+  .dependsOn(clientCore)
+
+lazy val jquery = (project in file("jquery")).
+  settings(commonSettings: _*)
+  .dependsOn(clientCore)
+
+lazy val react = (project in file("react")).
+  settings(commonSettings: _*)
+  .dependsOn(clientCore)
+
+lazy val communicateJS = (project in file("communicateJS")).
+  settings(commonSettings: _*)
+  .dependsOn(clientCore)
+
+lazy val jsonServer = (project in file("jsonServer")).
+  settings(commonSettings: _*)
+  .dependsOn(jsonCommon)
+
+lazy val jsonCommon = (project in file("jsonCommon")).
+  settings(commonSettings: _*)
+
+lazy val jsonClient = (project in file("jsonClient")).
+  settings(commonSettings: _*)
+  .dependsOn(clientCore)
+  .dependsOn(jsonCommon)
