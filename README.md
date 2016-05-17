@@ -1,3 +1,19 @@
-# The Scala.js tutorial
+## scalaJS sample
 
-This repository contains the code accompanying the [Scala.js tutorial](http://www.scala-js.org/doc/tutorial.html)
+
+## done
+- fastJS/fullJS
+- server communicate (with JSON)
+- jQuery helloWorld
+- react helloWorld
+- test helloWorld
+
+## todo
+
+- redux
+- store(local storage)
+- react components
+- use typings
+- router
+- multi page application
+- react testUtils
