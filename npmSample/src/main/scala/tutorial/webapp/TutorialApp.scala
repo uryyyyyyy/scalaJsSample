@@ -1,10 +1,9 @@
 package tutorial.webapp
 
+import scala.scalajs.js.JSApp
 import japgolly.scalajs.react.{ReactComponentB, ReactDOM}
 import japgolly.scalajs.react.vdom.prefix_<^._
 import org.scalajs.dom.document
-
-import scala.scalajs.js.JSApp
 
 object TutorialApp extends JSApp {
   def main(): Unit = {
@@ -12,14 +11,14 @@ object TutorialApp extends JSApp {
 
     val Hello =
       ReactComponentB[String]("Hello")
-        .render_P(name => <.div(^.id := 1, "Hello there ", name))
+        .render_P(name => <.div("Hello there ", name))
         .build
 
     val NoArgs =
-      ReactComponentB[Unit]("No args")
-        .render(_ => <.div(Hello("John"), Hello("Sample")))
+      ReactComponentB[String]("No args")
+        .render_P(str => <.div(Hello(str), Hello("Sample")))
         .build
 
-    ReactDOM.render(NoArgs(), document.body)
+    ReactDOM.render(NoArgs("hello"), document.body)
   }
 }

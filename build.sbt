@@ -37,3 +37,7 @@ lazy val jsonClient = (project in file("jsonClient")).
   settings(commonSettings: _*)
   .dependsOn(clientCore)
   .dependsOn(jsonCommon)
+
+lazy val npmSample = (project in file("npmSample")).
+  settings(commonSettings: _*)
+  .dependsOn(clientCore)

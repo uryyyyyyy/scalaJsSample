@@ -1,0 +1,1 @@
+window.mui = require("material-ui");
