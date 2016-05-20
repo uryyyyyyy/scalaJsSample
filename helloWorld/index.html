@@ -6,12 +6,13 @@
 </head>
 <body>
 <!-- Include Scala.js compiled code -->
-<script type="text/javascript" src="target/scala-2.11/helloworld-fastopt.js"></script>
+<script type="text/javascript" src="generated/helloworld-fastopt.js"></script>
 
 
 <!-- Run tutorial.webapp.TutorialApp -->
 <script type="text/javascript">
-    tutorial.webapp.TutorialApp().main();
+    var obj = com.github.uryyyyyyy.scalajs.helloworld.Main();
+    obj.main();
 </script>
 </body>
 </html>

@@ -1,3 +1,0 @@
-enablePlugins(ScalaJSPlugin)
-
-name := "helloWorld"
