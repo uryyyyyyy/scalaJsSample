@@ -21,9 +21,12 @@ lazy val helloWorld = (project in file("helloWorld"))
       "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
       "org.scalatest" %%% "scalatest" % "3.0.0-M15" % "test"
     ),
-    testFrameworks += new TestFramework("utest.runner.Framework"),
-    jsDependencies += RuntimeDOM,
-    jsDependencies += "org.webjars" % "jquery" % "2.1.4" / "2.1.4/jquery.js",
+    //testFrameworks += new TestFramework("utest.runner.Framework"),
+    //requiresDOM := true,
+    jsDependencies ++= Seq(
+      RuntimeDOM,
+      "org.webjars" % "jquery" % "2.1.4" / "2.1.4/jquery.js"
+    ),
     crossTarget  in (Compile, fullOptJS)                     := helloWorldOutputDir,
     crossTarget  in (Compile, fastOptJS)                     := helloWorldOutputDir,
     crossTarget  in (Compile, packageJSDependencies)         := helloWorldOutputDir,
@@ -53,10 +56,17 @@ lazy val useLibrary = (project in file("useLibrary"))
       "com.lihaoyi" %%% "upickle" % "0.4.0",
       "com.github.japgolly.scalajs-react" %%% "core" % "0.10.4",
       "com.github.japgolly.scalajs-react" %%% "extra" % "0.10.4",
+      "com.github.japgolly.scalajs-react" %%% "test" % "0.10.4" % "test",
       "com.github.chandu0101.scalajs-react-components" %%% "core" % "0.4.1",
-      "org.scalatest" %% "scalatest" % "3.0.0-M15" % "test"
+      "org.scalatest" %%% "scalatest" % "3.0.0-M15" % "test"
     ),
-    jsDependencies += RuntimeDOM,
+    jsDependencies ++= Seq(
+      RuntimeDOM % "test",
+      ProvidedJS / "generated/react_with_addon-bundle.js" % "test",
+      ProvidedJS / "generated/myJS-bundle.js" % "test",
+      ProvidedJS / "generated/material_ui-bundle.js" % "test",
+      "org.webjars.bower" % "jquery" % "2.1.4" % "test" / "2.1.4/dist/jquery.js"
+    ),
     crossTarget  in (Compile, fullOptJS)                     := useLibraryOutputDir,
     crossTarget  in (Compile, fastOptJS)                     := useLibraryOutputDir,
     crossTarget  in (Compile, packageJSDependencies)         := useLibraryOutputDir,
@@ -71,9 +81,6 @@ lazy val jsonServer = (project in file("jsonServer"))
     name := "json-server",
     libraryDependencies ++= Seq(
       "com.lihaoyi" %% "upickle" % "0.4.0",
-      jdbc,
-      cache,
-      ws,
       "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
     ),
     resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"

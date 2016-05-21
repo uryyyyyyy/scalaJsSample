@@ -5,17 +5,29 @@
     <title>The Scala.js Tutorial</title>
 </head>
 <body>
+<div id="content"></div>
+
+</body>
+
+<script type="text/javascript">
+    sample = {
+        hello(str) {
+            console.log("js receive: " + str);
+            return "pong";
+        }
+    }
+</script>
+
 <!-- Include Scala.js compiled code -->
-<script type="text/javascript" src="generated/use-library-fastopt.js"></script>
 <script type="text/javascript" src="generated/jquery-bundle.js"></script>
 <script type="text/javascript" src="generated/react-bundle.js"></script>
 <script type="text/javascript" src="generated/material_ui-bundle.js"></script>
 <script type="text/javascript" src="generated/myJS-bundle.js"></script>
+<script type="text/javascript" src="generated/use-library-fastopt.js"></script>
 
 <!-- Run tutorial.webapp.TutorialApp -->
 <script type="text/javascript">
-    var obj = com.github.uryyyyyyy.scalajs.useLibrary.JQueryMain();
+    var obj = com.github.uryyyyyyy.scalajs.useLibrary.react.router.Main();
     obj.main();
 </script>
-</body>
 </html>

@@ -6,7 +6,7 @@ import org.scalajs.dom.document
 
 import scala.scalajs.js.JSApp
 
-object TutorialApp extends JSApp {
+object Main extends JSApp {
   def main(): Unit = {
     println("helloWorld")
 
