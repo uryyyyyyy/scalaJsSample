@@ -7,13 +7,12 @@
 - jQuery helloWorld
 - react helloWorld
 - test helloWorld
+- react components
 
 ## todo
 
 - redux
 - store(local storage)
-- react components
-- use typings
 - router
 - multi page application
 - react testUtils

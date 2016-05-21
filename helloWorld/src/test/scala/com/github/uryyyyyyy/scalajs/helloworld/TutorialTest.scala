@@ -1,31 +1,22 @@
-//package com.github.uryyyyyyy.scalajs.helloworld
-//
-//import utest._
-//
-//import org.scalajs.jquery.jQuery
-//
-//object TutorialTest extends TestSuite {
-//
-//  // Initialize App
-//  Main.setupUI()
-//
-//  def tests = TestSuite {
-//    'HelloWorld {
-//      assert(jQuery("p:contains('Hello World')").length == 1)
-//    }
-//
-//    'ButtonClick {
-//      def messageCount =
-//        jQuery("p:contains('You clicked the button!')").length
-//
-//      val button = jQuery("button:contains('Click me!')")
-//      assert(button.length == 1)
-//      assert(messageCount == 0)
-//
-//      for (c <- 1 to 5) {
-//        button.click()
-//        assert(messageCount == c)
-//      }
-//    }
-//  }
-//}
+package com.github.uryyyyyyy.scalajs.helloworld
+
+import org.scalajs.dom.window
+import org.scalajs.jquery.jQuery
+import org.scalatest._
+
+class TutorialTest extends FunSpec with Matchers {
+  describe("jQuery2") {
+    TutorialApp.setupUI()
+
+    it("test1", AsyncTest){
+      val href = window.location.href
+      println(window.name)
+      println(href)
+      1 shouldBe 1
+    }
+    it("test2", AsyncTest){
+
+      jQuery("p:contains('Hello World')").length shouldBe 1
+    }
+  }
+}

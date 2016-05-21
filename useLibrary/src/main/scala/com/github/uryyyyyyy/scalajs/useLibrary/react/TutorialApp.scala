@@ -18,7 +18,7 @@ object TutorialApp extends JSApp {
     val NoArgs =
       ReactComponentB[Unit]("No args")
         .render(_ => <.div(Hello("John"), Hello("Sample")))
-        .build
+        .buildU
 
     ReactDOM.render(NoArgs(), document.body)
   }
