@@ -11,8 +11,15 @@ class ReactTest1 extends FunSpec with Matchers {
 
     it("test1", NormalTest){
       val comp = ReactTestUtils renderIntoDocument MyComponent(MyComponent.Props(1))
-//      ChangeEventData("bob").simulate(comp)
+
       comp.state.list shouldBe Seq("init", "hey")
+
+      ReactTestUtils.Simulate.click(comp)
+
+      comp.state.list shouldBe Seq("hello", "aaa")
+
+      val comp2 = ReactTestUtils.findRenderedDOMComponentWithTag(comp, "ol")
+      comp2.getDOMNode().childNodes.length shouldBe 2
 
     }
   }

@@ -11,13 +11,14 @@ object MyComponent {
 
   private[MyComponent] class Backend($: BackendScope[Props, State]) {
 
-    def action(e:SyntheticEvent[dom.Node]): Callback ={
-      println(this.$.state.runNow())
+    def action(s: State)(e:SyntheticEvent[dom.Node]): Callback ={
+      println(s)
       $.modState(s => s.copy(list = Seq("hello", "aaa")))
     }
     def render(p: Props, s: State) = {
       <.div(
-        <.div(^.onClick ==> action, p.id + " items found:"),
+        ^.onClick ==> action(s),
+        <.div(p.id + " items found:"),
         <.ol(s.list.map(i => <.li(i)))
       )
     }
